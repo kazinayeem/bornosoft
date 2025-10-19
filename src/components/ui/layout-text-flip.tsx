@@ -13,14 +13,13 @@ export const LayoutTextFlip = ({
   duration?: number;
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % words.length);
     }, duration);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length, duration]);
 
   return (
     <>
