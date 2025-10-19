@@ -1,0 +1,119 @@
+"use client";
+
+import { Menu, X, Zap } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+
+export const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navItems = [
+    { name: "Solutions", href: "#solutions" },
+    { name: "Pricing", href: "#pricing" },
+    { name: "Process", href: "#process" },
+    { name: "Stack", href: "#tech" },
+    { name: "Our Team", href: "#team" },
+    { name: "Contact", href: "#contact" },
+  ];
+
+  return (
+    <motion.header
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-950 shadow-lg dark:shadow-2xl backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95 transition-colors duration-300"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <motion.a
+            href="#"
+            className="flex items-center space-x-2 text-2xl font-extrabold text-indigo-700 dark:text-indigo-400 tracking-tight"
+            whileHover={{ scale: 1.05 }}
+          >
+            <Zap className="w-6 h-6 animate-pulse" />
+            <span>Bornosoft</span>
+          </motion.a>
+
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex space-x-6 lg:space-x-8 items-center">
+            {navItems.map((item, index) => (
+              <motion.a
+                key={item.name}
+                href={item.href}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.4 }}
+                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-150 font-medium"
+                whileHover={{ scale: 1.08 }}
+              >
+                {item.name}
+              </motion.a>
+            ))}
+          </nav>
+
+          {/* Right Side Buttons */}
+          <div className="flex items-center space-x-4">
+            {/* Contact Button */}
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden md:inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300 shadow-xl hover:shadow-2xl"
+            >
+              Start a Project
+            </motion.a>
+
+            {/* Mobile Menu Toggle */}
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </motion.button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu with Animation */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden border-t border-gray-100 dark:border-gray-800"
+          >
+            <div className="px-2 pt-2 pb-3 flex flex-col items-start">
+              {navItems.map((item) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  whileHover={{ scale: 1.02, x: 4 }}
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-800 w-full"
+                >
+                  {item.name}
+                </motion.a>
+              ))}
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.03 }}
+                className="w-full text-center px-3 py-2 mt-2 border border-transparent text-base font-medium rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300 shadow-md"
+              >
+                Start a Project
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
+  );
+};
