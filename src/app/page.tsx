@@ -1,29 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import {
-  Bot,
-  Code,
-  Zap,
-  Menu,
-  X,
-  Rocket,
-  Cpu,
-  Sun,
-  Moon,
-  Star,
-  Users,
-  CheckCircle,
-  Mail,
-  Briefcase,
-  User,
-  MapPin,
-  Layers,
-  Settings,
-  GitBranch,
-  Shield,
-  Clock,
-  Aperture,
-} from "lucide-react";
+import React from "react";
+
 import { HeroSection } from "@/components/HeroSection";
 import { SolutionsSection } from "@/components/SolutionsSection";
 import { PricingSection } from "@/components/PricingSection";
@@ -34,8 +11,6 @@ import { ContactSection } from "@/components/ContactSection";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
-
-
 
 const App = () => {
   return (
