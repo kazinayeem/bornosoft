@@ -1,11 +1,13 @@
 "use client";
 
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X, Zap, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const navItems = [
     { name: "Solutions", href: "#solutions" },
@@ -63,6 +65,20 @@ export const Navbar = () => {
             >
               Start a Project
             </motion.a>
+
+            {/* Dark/Light Toggle */}
+            <motion.button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              whileTap={{ scale: 0.9 }}
+              className="p-2 rounded-md text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              title="Toggle Dark/Light Mode"
+            >
+              {theme === "dark" ? (
+                <Sun className="w-5 h-5" />
+              ) : (
+                <Moon className="w-5 h-5" />
+              )}
+            </motion.button>
 
             {/* Mobile Menu Toggle */}
             <motion.button
