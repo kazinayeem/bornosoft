@@ -8,7 +8,7 @@ import { LayoutTextFlip } from "@/components/ui/layout-text-flip";
 const images = ["/bg1.jpg", "/bg2.jpg", "/bg3.jpg", "/bg4.jpg"];
 
 export const HeroSection = () => {
-  const [currentBg, setCurrentBg] = useState(0);
+  const [currentBg, setCurrentBg] = useState(1);
 
   useEffect(() => {
     const interval = setInterval(() => {

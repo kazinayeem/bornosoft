@@ -34,7 +34,12 @@ export const Navbar = () => {
             whileHover={{ scale: 1.05 }}
           >
             <Zap className="w-6 h-6 animate-pulse" />
-            <span>Bornosoft</span>
+            <div className="flex flex-col leading-tight">
+              <span>Bornosoft</span>
+              <span className="text-[10px] uppercase text-gray-500 dark:text-gray-400 tracking-wider">
+                Beta
+              </span>
+            </div>
           </motion.a>
 
           {/* Desktop Nav */}
