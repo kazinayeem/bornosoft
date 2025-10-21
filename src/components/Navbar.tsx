@@ -1,20 +1,26 @@
 "use client";
 
 import { Menu, X, Zap, Sun, Moon } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useState } from "react";
 import { useTheme } from "next-themes";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   const navItems = [
     { name: "Solutions", href: "#solutions" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Process", href: "#process" },
-    { name: "Stack", href: "#tech" },
+    { name: "Tech Stack", href: "#tech" },
+    { name: "Projects", href: "#projects" },
     { name: "Our Team", href: "#team" },
+    { name: "Pricing", href: "#pricing" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -23,23 +29,23 @@ export const Navbar = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-950 shadow-lg dark:shadow-2xl backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95 transition-colors duration-300"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/80 shadow-lg dark:shadow-2xl backdrop-blur-md border-b border-gray-200/50 dark:border-blue-500/20 transition-colors duration-300"
     >
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-primary origin-left"
+        style={{ scaleX }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <motion.a
             href="#"
-            className="flex items-center space-x-2 text-2xl font-extrabold text-indigo-700 dark:text-indigo-400 tracking-tight"
+            className="flex items-center space-x-2 text-2xl font-extrabold bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent tracking-tight"
             whileHover={{ scale: 1.05 }}
           >
-            <Zap className="w-6 h-6 animate-pulse" />
-            <div className="flex flex-col leading-tight">
-              <span>Bornosoft</span>
-              <span className="text-[10px] uppercase text-gray-500 dark:text-gray-400 tracking-wider">
-                Beta
-              </span>
-            </div>
+            <Zap className="w-6 h-6 text-brand-primary animate-pulse" />
+            <span>BornoSoft</span>
           </motion.a>
 
           {/* Desktop Nav */}
@@ -51,7 +57,7 @@ export const Navbar = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.4 }}
-                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-150 font-medium"
+                className="text-gray-600 dark:text-gray-300 hover:text-brand-primary dark:hover:text-brand-accent transition duration-150 font-medium"
                 whileHover={{ scale: 1.08 }}
               >
                 {item.name}
@@ -66,9 +72,9 @@ export const Navbar = () => {
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="hidden md:inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300 shadow-xl hover:shadow-2xl"
+              className="hidden md:inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-bold rounded-xl text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:shadow-xl transition duration-300 shadow-lg"
             >
-              Start a Project
+              Get Free Consultation
             </motion.a>
 
             {/* Dark/Light Toggle */}

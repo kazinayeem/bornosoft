@@ -16,55 +16,78 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bornosoftnr.com'),
   title: {
-    default: "Bornosoft: Empowering Businesses with Smart Technology",
-    template: "%s | Bornosoft",
+    default: "BornoSoft | AI-Powered Web Development & Digital Solutions in Bangladesh",
+    template: "%s | BornoSoft",
   },
   description:
-    "Bornosoft empowers businesses with smart technology solutions, including custom software development, AI, and cloud services. We help your business thrive in the digital age.", // More detailed and keyword-rich
-
+    "Transform your business with intelligent web applications, AI integration, and cloud solutions. Expert full-stack development team in Dhaka, Bangladesh delivering scalable software solutions.",
+  keywords: [
+    "web development Bangladesh",
+    "AI solutions",
+    "full-stack development",
+    "software company Dhaka",
+    "custom web applications",
+    "AI chatbot development",
+    "cloud solutions",
+    "mobile app development",
+    "progressive web apps",
+    "React development",
+    "Node.js development",
+    "Python AI development",
+  ],
+  authors: [{ name: "BornoSoft Team" }],
+  creator: "BornoSoft",
+  publisher: "BornoSoft",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: "Bornosoft: Empowering Businesses with Smart Technology",
+    title: "BornoSoft - Transform Ideas Into Intelligent Digital Solutions",
     description:
-      "Bornosoft empowers businesses with smart technology solutions, including custom software development, AI, and cloud services. We help your business thrive in the digital age.",
-    url: "https://bornosoftnr.com/",
-    siteName: "Bornosoft",
+      "We build AI-powered web applications that scale your business from concept to market leadership. Expert development team in Bangladesh.",
+    url: "https://bornosoftnr.com",
+    siteName: "BornoSoft",
     images: [
       {
-        url: "/logo.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Bornosoft Logo and tagline",
+        alt: "BornoSoft - Intelligent Digital Solutions",
       },
     ],
     locale: "en_US",
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "Bornosoft: Smart Technology for Business Growth",
+    title: "BornoSoft - AI-Powered Web Development",
     description:
-      "Custom software, AI, and cloud services to help your business thrive.",
-    creator: "@yourtwitterhandle",
-    images: ["/logo.png"],
+      "Transform your business with intelligent web applications and AI solutions. Expert full-stack development in Bangladesh.",
+    creator: "@bornosoft",
+    images: ["/og-image.jpg"],
   },
-
-  // 4. Icons
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
-
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  alternates: {
+    canonical: "https://bornosoftnr.com",
   },
 };
 
@@ -73,14 +96,63 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "BornoSoft",
+    alternateName: "Bornosoft",
+    url: "https://bornosoftnr.com",
+    logo: "https://bornosoftnr.com/logo.png",
+    description: "AI-powered web development and digital solutions company in Bangladesh",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Dhaka",
+      addressCountry: "BD",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "Customer Service",
+      email: "info@bornosoft.com",
+    },
+    sameAs: [
+      "https://linkedin.com/company/bornosoft",
+      "https://twitter.com/bornosoft",
+      "https://github.com/bornosoft",
+    ],
+    founder: [
+      {
+        "@type": "Person",
+        name: "Mohammad Ali Nayeem",
+        jobTitle: "Full Stack Developer & Software Engineer",
+      },
+      {
+        "@type": "Person",
+        name: "Reduan Ahmad",
+        jobTitle: "Full Stack Developer & Software Engineer",
+      },
+    ],
+    areaServed: "Worldwide",
+    serviceType: [
+      "Web Development",
+      "AI Solutions",
+      "Mobile App Development",
+      "Cloud Services",
+      "Software Consulting",
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         cz-shortcut-listen="true"
       >
-        
-        
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

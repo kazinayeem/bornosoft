@@ -32,25 +32,44 @@ export const LayoutTextFlip = ({
 
       <motion.span
         layout
-        className="relative w-fit overflow-hidden rounded-md border border-transparent bg-white px-4 py-2 font-sans text-2xl font-bold tracking-tight text-black shadow-sm ring shadow-black/10 ring-black/10 drop-shadow-lg md:text-4xl dark:bg-neutral-900 dark:text-white dark:shadow-sm dark:ring-1 dark:shadow-white/10 dark:ring-white/10"
+        className="relative w-fit overflow-hidden rounded-2xl border-2 border-transparent bg-gradient-to-br from-blue-500 via-purple-600 to-pink-600 px-6 py-3 font-sans text-2xl font-black tracking-tight text-white shadow-2xl ring-2 ring-blue-500/50 drop-shadow-2xl md:text-4xl animate-gradient-shift"
+        style={{
+          backgroundSize: "200% 200%",
+        }}
       >
         <AnimatePresence mode="popLayout">
           <motion.span
             key={currentIndex}
-            initial={{ y: -40, filter: "blur(10px)" }}
+            initial={{ y: -50, filter: "blur(15px)", opacity: 0, rotateX: -90 }}
             animate={{
               y: 0,
               filter: "blur(0px)",
+              opacity: 1,
+              rotateX: 0,
             }}
-            exit={{ y: 50, filter: "blur(10px)", opacity: 0 }}
+            exit={{ y: 50, filter: "blur(15px)", opacity: 0, rotateX: 90 }}
             transition={{
-              duration: 0.5,
+              duration: 0.6,
+              ease: [0.4, 0, 0.2, 1],
             }}
             className={cn("inline-block whitespace-nowrap")}
           >
             {words[currentIndex]}
           </motion.span>
         </AnimatePresence>
+        
+        {/* Shine effect */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+          initial={{ x: "-100%" }}
+          animate={{ x: "200%" }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            repeatDelay: 3,
+            ease: "linear",
+          }}
+        />
       </motion.span>
     </>
   );
