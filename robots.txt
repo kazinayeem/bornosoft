@@ -1,0 +1,10 @@
+# Allow all web crawlers
+User-agent: *
+Disallow:
+
+# Optionally, block some private pages
+# Disallow: /admin
+# Disallow: /login
+
+# Sitemap location (if you have one)
+Sitemap: https://bornosoftnr.com//sitemap.xml

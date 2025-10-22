@@ -18,10 +18,10 @@ const teamMembers = [
     location: "Dhaka, Bangladesh",
     socials: {
       email: "nayeem@bornosoft.com",
-      linkedin: "https://linkedin.com/in/mohammadalinayeem",
+      linkedin: "https://www.linkedin.com/in/mohammad-ali-nayeem/",
       github: "https://github.com/kazinayeem",
       twitter: "https://twitter.com/mohammadalinayeem",
-      website: "https://nayeem.dev",
+      website: "https://kazinayeem.site",
     },
   },
   {

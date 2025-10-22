@@ -1,8 +1,8 @@
-
 import { Menu, X, Zap, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useState } from "react";
 import { useTheme } from "next-themes";
+import { Link } from "react-router";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,14 +38,15 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <motion.a
-            href="#"
-            className="flex items-center space-x-2 text-2xl font-extrabold bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent tracking-tight"
-            whileHover={{ scale: 1.05 }}
-          >
-            <Zap className="w-6 h-6 text-brand-primary animate-pulse" />
-            <span>BornoSoft</span>
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.05 }}>
+            <Link
+              to="/"
+              className="flex items-center space-x-2 text-2xl font-extrabold bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent tracking-tight"
+            >
+              <Zap className="w-6 h-6 text-brand-primary animate-pulse" />
+              <span>BornoSoft</span>
+            </Link>
+          </motion.div>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex space-x-6 lg:space-x-8 items-center">

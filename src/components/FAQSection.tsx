@@ -1,4 +1,3 @@
-
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, HelpCircle, MessageCircle } from "lucide-react";
 import { useState } from "react";
@@ -80,7 +79,7 @@ export const FAQSection = () => {
           >
             <HelpCircle className="w-8 h-8 text-white" />
           </motion.div>
-          
+
           <h2 className="text-base font-bold text-brand-primary dark:text-brand-accent tracking-wide uppercase mb-3">
             Frequently Asked Questions
           </h2>
@@ -116,14 +115,20 @@ export const FAQSection = () => {
                 className="w-full px-6 py-6 flex items-start justify-between text-left group"
               >
                 <div className="flex items-start gap-4 flex-1">
-                  <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    openIndex === index
-                      ? "bg-gradient-to-br from-blue-600 to-purple-600 scale-110"
-                      : "bg-gray-200 dark:bg-gray-700 group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-purple-500"
-                  }`}>
-                    <span className={`font-bold ${
-                      openIndex === index ? "text-white" : "text-gray-600 dark:text-gray-300"
-                    }`}>
+                  <div
+                    className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      openIndex === index
+                        ? "bg-gradient-to-br from-blue-600 to-purple-600 scale-110"
+                        : "bg-gray-200 dark:bg-gray-700 group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-purple-500"
+                    }`}
+                  >
+                    <span
+                      className={`font-bold ${
+                        openIndex === index
+                          ? "text-white"
+                          : "text-gray-600 dark:text-gray-300"
+                      }`}
+                    >
                       {index + 1}
                     </span>
                   </div>
@@ -136,14 +141,20 @@ export const FAQSection = () => {
                   transition={{ duration: 0.3, type: "spring", stiffness: 200 }}
                   className="flex-shrink-0"
                 >
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                    openIndex === index
-                      ? "bg-brand-primary dark:bg-brand-accent"
-                      : "bg-gray-200 dark:bg-gray-700"
-                  }`}>
-                    <ChevronDown className={`w-5 h-5 ${
-                      openIndex === index ? "text-white" : "text-gray-600 dark:text-gray-300"
-                    }`} />
+                  <div
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                      openIndex === index
+                        ? "bg-brand-primary dark:bg-brand-accent"
+                        : "bg-gray-200 dark:bg-gray-700"
+                    }`}
+                  >
+                    <ChevronDown
+                      className={`w-5 h-5 ${
+                        openIndex === index
+                          ? "text-white"
+                          : "text-gray-600 dark:text-gray-300"
+                      }`}
+                    />
                   </div>
                 </motion.div>
               </button>
@@ -182,7 +193,10 @@ export const FAQSection = () => {
           {/* Animated background pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 right-0 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
+            <div
+              className="absolute bottom-0 right-0 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"
+              style={{ animationDelay: "1s" }}
+            ></div>
           </div>
 
           <motion.div
@@ -193,12 +207,13 @@ export const FAQSection = () => {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm mb-4">
               <MessageCircle className="w-8 h-8 text-white" />
             </div>
-            
+
             <h3 className="text-3xl font-black text-white mb-3">
               Still have questions?
             </h3>
             <p className="text-white/90 text-lg mb-6 max-w-2xl mx-auto">
-              Our team is here to help. Get in touch for a free consultation and let&apos;s discuss your project.
+              Our team is here to help. Get in touch for a free consultation and
+              let&apos;s discuss your project.
             </p>
             <a
               href="#contact"
