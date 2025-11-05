@@ -8,11 +8,11 @@ import { TestimonialsSection } from "./components/TestimonialsSection";
 import { PricingSection } from "./components/PricingSection";
 import { ProcessSection } from "./components/ProcessSection";
 import { TechStackSection } from "./components/TechStackSection";
-import { TeamSection } from "./components/TeamSection";
 import { FAQSection } from "./components/FAQSection";
 import { ContactSection } from "./components/ContactSection";
 import { Navbar } from "./components/Navbar";
 import { BackToTop } from "./components/BackToTop";
+import OurAiProduct from "./components/OurAiProduct";
 
 const App: React.FC = () => {
   React.useEffect(() => {
@@ -109,9 +109,9 @@ const App: React.FC = () => {
           <SolutionsSection />
           <TechStackSection />
           <ProcessSection />
+          <OurAiProduct />
           <ProjectsSection />
           <TestimonialsSection />
-          <TeamSection />
           <PricingSection />
           <FAQSection />
           <ContactSection />

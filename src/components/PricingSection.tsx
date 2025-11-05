@@ -1,7 +1,7 @@
-
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import { useState } from "react";
+import { NavLink } from "react-router";
 
 const pricingTiers = [
   {
@@ -9,7 +9,8 @@ const pricingTiers = [
     priceBDT: "12,000",
     priceUSD: "100",
     duration: "One-Time",
-    description: "Perfect for small projects, prototypes, or personal websites.",
+    description:
+      "Perfect for small projects, prototypes, or personal websites.",
     features: [
       "Single Page Application (SPA)",
       "Modern Responsive Design",
@@ -91,7 +92,16 @@ export const PricingSection = () => {
             </span>
           </p>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
-            From startups to enterprises — transparent pricing with no hidden fees. All prices are one-time project costs.
+            From startups to enterprises — transparent pricing with no hidden
+            fees. All prices are one-time project costs.
+          </p>
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+            <NavLink
+              to="/cost-calculator"
+              className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline hover:text-indigo-700 dark:hover:text-indigo-300 transition"
+            >
+              Cost Calculator
+            </NavLink>
           </p>
 
           {/* Currency Switcher */}
@@ -124,9 +134,9 @@ export const PricingSection = () => {
           </div>
         </motion.div>
 
-      {/* Pricing Grid */}
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-        {pricingTiers.map((tier, index) => (
+        {/* Pricing Grid */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {pricingTiers.map((tier, index) => (
             <motion.div
               key={tier.name}
               className={`relative p-8 rounded-3xl transition duration-500 transform hover:scale-[1.02] ${
@@ -147,65 +157,67 @@ export const PricingSection = () => {
                 </div>
               )}
 
-            <div className="mb-4">
-              <span className={`inline-block px-4 py-2 rounded-full text-sm font-bold text-white bg-gradient-to-r ${tier.gradient} shadow-lg`}>
-                ⏱️ {tier.duration}
-              </span>
-            </div>
-
-            <h3 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">
-              {tier.name}
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400 mb-6">{tier.description}</p>
-
-            <div className="mb-8">
-              <div className="flex items-baseline justify-center gap-2">
-                {tier.priceBDT === "Custom" || tier.priceUSD === "Custom" ? (
-                  <span className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white whitespace-nowrap">
-                    Custom Quote
-                  </span>
-                ) : (
-                  <>
-                    <span className="text-2xl font-bold text-gray-900 dark:text-white">
-                      {currency === "BDT" ? "৳" : "$"}
-                    </span>
-                    <span className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white">
-                      {currency === "BDT" ? tier.priceBDT : tier.priceUSD}
-                    </span>
-                    <span className="text-lg font-semibold text-gray-500 dark:text-gray-400">
-                      {currency === "BDT" ? "BDT" : "USD"}
-                    </span>
-                  </>
-                )}
+              <div className="mb-4">
+                <span
+                  className={`inline-block px-4 py-2 rounded-full text-sm font-bold text-white bg-gradient-to-r ${tier.gradient} shadow-lg`}
+                >
+                  ⏱️ {tier.duration}
+                </span>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                {tier.duration}
+
+              <h3 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">
+                {tier.name}
+              </h3>
+              <p className="text-gray-500 dark:text-gray-400 mb-6">
+                {tier.description}
               </p>
-            </div>
 
-            <a
-              href="#contact"
-              className={`block w-full text-center py-4 border border-transparent text-base font-bold rounded-xl text-white bg-gradient-to-r ${tier.gradient} hover:shadow-glow-blue transition-all duration-300 shadow-lg mb-8 transform hover:scale-105`}
-            >
-              {tier.buttonText}
-            </a>
+              <div className="mb-8">
+                <div className="flex items-baseline justify-center gap-2">
+                  {tier.priceBDT === "Custom" || tier.priceUSD === "Custom" ? (
+                    <span className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white whitespace-nowrap">
+                      Custom Quote
+                    </span>
+                  ) : (
+                    <>
+                      <span className="text-2xl font-bold text-gray-900 dark:text-white">
+                        {currency === "BDT" ? "৳" : "$"}
+                      </span>
+                      <span className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white">
+                        {currency === "BDT" ? tier.priceBDT : tier.priceUSD}
+                      </span>
+                      <span className="text-lg font-semibold text-gray-500 dark:text-gray-400">
+                        {currency === "BDT" ? "BDT" : "USD"}
+                      </span>
+                    </>
+                  )}
+                </div>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                  {tier.duration}
+                </p>
+              </div>
 
-            <ul role="list" className="space-y-4">
-              {tier.features.map((feature, idx) => (
-                <li key={idx} className="flex items-start">
-                  <CheckCircle
-                    className="flex-shrink-0 h-5 w-5 text-brand-accent mt-0.5"
-                  />
-                  <p className="ml-3 text-base text-gray-700 dark:text-gray-300 font-medium">
-                    {feature}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
+              <a
+                href="#contact"
+                className={`block w-full text-center py-4 border border-transparent text-base font-bold rounded-xl text-white bg-gradient-to-r ${tier.gradient} hover:shadow-glow-blue transition-all duration-300 shadow-lg mb-8 transform hover:scale-105`}
+              >
+                {tier.buttonText}
+              </a>
+
+              <ul role="list" className="space-y-4">
+                {tier.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start">
+                    <CheckCircle className="flex-shrink-0 h-5 w-5 text-brand-accent mt-0.5" />
+                    <p className="ml-3 text-base text-gray-700 dark:text-gray-300 font-medium">
+                      {feature}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   );
 };

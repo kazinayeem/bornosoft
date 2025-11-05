@@ -1,270 +1,363 @@
-"use client";
-
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, TrendingUp, Users, Zap } from "lucide-react";
+import {
+  ExternalLink,
+  TrendingUp,
+  Users,
+  Zap,
+  Cloud,
+  Code,
+  Database,
+  Globe,
+  Layers,
+  DollarSign,
+  HardHat,
+} from "lucide-react";
 
-import { useState } from "react";
+type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
-const projects = [
+interface Metric {
+  label: string;
+  value: string;
+  icon: IconComponent;
+}
+
+interface Project {
+  title: string;
+  client: string;
+  category: string;
+  image: string;
+  description: string;
+  metrics: Metric[];
+  technologies: string[];
+  link: string;
+  icon: IconComponent;
+}
+
+const projects: Project[] = [
   {
-    title: "E-Commerce Platform Redesign",
-    client: "RetailMax",
-    category: "Web Development",
+    title: "NexusFlow: Unified SaaS Platform",
+    client: "Orion Solutions Group",
+    category: "SaaS & Productivity",
     image:
-      "https://images.unsplash.com/photo-1661956602116-aa6865609028?w=800&q=80",
+      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop",
     description:
-      "Complete platform overhaul with AI-powered product recommendations and real-time inventory management.",
+      "A complete B2B SaaS platform offering integrated CRM, analytics, and collaboration tools, driving a 30% reduction in operational costs.",
     metrics: [
-      { label: "Sales Increase", value: "+250%", icon: TrendingUp },
-      { label: "User Growth", value: "+180%", icon: Users },
-      { label: "Page Speed", value: "98/100", icon: Zap },
+      { label: "Op-Cost Reduction", value: "-30%", icon: TrendingUp },
+      { label: "Active Users", value: "20K+", icon: Users },
+      { label: "Response Time", value: "<100ms", icon: Zap },
     ],
-    technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
+    technologies: ["React", "GoLang", "PostgreSQL", "Kafka"],
     link: "#",
+    icon: Layers,
   },
   {
-    title: "AI-Powered Healthcare Dashboard",
-    client: "HealthCare Plus",
-    category: "AI & ML",
+    title: "AuraHealth: Predictive Diagnostic Engine",
+    client: "Zenith Medical Lab",
+    category: "AI & Machine Learning",
     image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop",
     description:
-      "HIPAA-compliant patient management system with predictive analytics and automated reporting.",
+      "HIPAA-compliant system using deep learning to predict patient readmission rates and automate risk assessment with 95% accuracy.",
     metrics: [
-      { label: "Efficiency", value: "+300%", icon: TrendingUp },
-      { label: "Patients Served", value: "50K+", icon: Users },
-      { label: "Uptime", value: "99.9%", icon: Zap },
+      { label: "Accuracy", value: "95%", icon: TrendingUp },
+      { label: "Data Points", value: "50M+", icon: Database },
+      { label: "Deployment Speed", value: "Fast", icon: Zap },
     ],
-    technologies: ["Python", "TensorFlow", "React", "MongoDB"],
+    technologies: ["Python", "TensorFlow", "Kubernetes", "Azure ML"],
     link: "#",
+    icon: Database,
   },
   {
-    title: "FinTech Mobile Banking App",
-    client: "FinanceHub",
-    category: "Mobile Development",
+    title: "VaultLedger: Decentralized Wallet App",
+    client: "Echelon Capital Partners",
+    category: "Web3 & Blockchain",
     image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop",
     description:
-      "Cross-platform mobile banking solution with biometric authentication and real-time transactions.",
+      "A cross-platform mobile wallet supporting multi-chain assets, secured with zero-knowledge proof technology and biometric keys.",
     metrics: [
-      { label: "Downloads", value: "100K+", icon: Users },
-      { label: "Rating", value: "4.8/5.0", icon: TrendingUp },
-      { label: "Transactions", value: "$5M+", icon: Zap },
+      { label: "Assets Secured", value: "$50M+", icon: Globe },
+      { label: "Transactions", value: "10K/day", icon: Zap },
+      { label: "User Rating", value: "4.9/5", icon: TrendingUp },
     ],
-    technologies: ["React Native", "Node.js", "Redis", "Docker"],
+    technologies: ["React Native", "Solidity", "IPFS", "TypeScript"],
     link: "#",
+    icon: Code,
   },
   {
-    title: "Cloud Infrastructure Migration",
-    client: "TechStart Inc",
-    category: "Cloud Solutions",
+    title: "AscendOps: Automated DevSecOps Pipeline",
+    client: "Pixel Foundry Studios",
+    category: "Cloud & DevOps",
     image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
     description:
-      "Complete migration from on-premise to AWS with auto-scaling, load balancing, and disaster recovery.",
+      "Infrastructure-as-Code implementation, migrating legacy monolithic systems to a fully serverless, auto-scaling AWS architecture.",
     metrics: [
-      { label: "Cost Savings", value: "-40%", icon: TrendingUp },
-      { label: "Performance", value: "+200%", icon: Zap },
-      { label: "Availability", value: "99.95%", icon: Users },
+      { label: "Cost Savings", value: "40%", icon: TrendingUp },
+      { label: "CI/CD Speed", value: "10x Faster", icon: Zap },
+      { label: "Uptime SLA", value: "99.99%", icon: Cloud },
     ],
-    technologies: ["AWS", "Kubernetes", "Terraform", "Docker"],
+    technologies: ["AWS", "Terraform", "Kubernetes", "Python"],
     link: "#",
+    icon: Cloud,
   },
   {
-    title: "AI Chatbot Integration",
-    client: "GreenEco Solutions",
-    category: "AI Solutions",
-    image:
-      "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80",
-    description:
-      "Intelligent customer support chatbot with natural language processing and multi-language support.",
-    metrics: [
-      { label: "Engagement", value: "+300%", icon: TrendingUp },
-      { label: "Resolution Rate", value: "85%", icon: Zap },
-      { label: "Response Time", value: "<2s", icon: Users },
-    ],
-    technologies: ["Python", "GPT-4", "React", "WebSocket"],
-    link: "#",
-  },
-  {
-    title: "Data Analytics Platform",
-    client: "DataFlow",
+    title: "EcoDash: Real-Time Data Visualization",
+    client: "TerraSense Environmental",
     category: "Data Engineering",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
     description:
-      "Real-time analytics dashboard with predictive modeling and automated insights generation.",
+      "High-throughput data streaming and analytics dashboard for environmental sensor data, providing immediate actionable insights.",
     metrics: [
-      { label: "Data Processed", value: "10TB+", icon: Zap },
+      { label: "Data Processed", value: "1TB/hr", icon: Zap },
+      { label: "Latency", value: "<50ms", icon: Database },
       { label: "Users", value: "5K+", icon: Users },
-      { label: "Insights", value: "95% Accuracy", icon: TrendingUp },
     ],
-    technologies: ["Python", "Apache Spark", "React", "MongoDB"],
+    technologies: ["Apache Spark", "Kafka", "React", "MongoDB"],
     link: "#",
+    icon: TrendingUp,
+  },
+  {
+    title: "EchoSense: Multi-Channel NLP Assistant",
+    client: "ContactStream BPO",
+    category: "AI Solutions",
+    image:
+      "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=800&auto=format&fit=crop",
+    description:
+      "Custom GPT-powered conversational AI integrated across web, mobile, and voice channels, handling 85% of initial customer inquiries.",
+    metrics: [
+      { label: "Inquiry Handling", value: "85%", icon: TrendingUp },
+      { label: "CSAT Score", value: "+15%", icon: Users },
+      { label: "Model Training", value: "12hrs", icon: Zap },
+    ],
+    technologies: ["Python", "GPT-4 API", "WebSocket", "React"],
+    link: "#",
+    icon: Users,
+  },
+  // --- UPDATED PROJECTS ---
+  {
+    title: "SwiftRoute: Multi-Vendor Logistics Network",
+    client: "HT Bazar e-comm",
+    category: "Logistics & Supply Chain",
+    image:
+      "https://images.unsplash.com/photo-1557827299-8051284568e9?q=80&w=800&auto=format&fit=crop",
+    description:
+      "Real-time parcel tracking and dynamic routing for multiple courier partners, featuring automated vendor selection for optimal cost and speed.",
+    metrics: [
+      { label: "Delivery Speed", value: "98%", icon: Zap },
+      { label: "Network Partners", value: "20+", icon: Globe },
+      { label: "Transaction Volume", value: "1M/month", icon: Layers },
+    ],
+    technologies: ["Node.js", "RabbitMQ", "PostGIS", "Vue.js"],
+    link: "#",
+    icon: Globe,
+  },
+  {
+    title: "Luminus Academy: Smart Education Platform",
+    client: "PathFinder Education Co.",
+    category: "EdTech & Content Delivery",
+    image:
+      "https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=800&auto=format&fit=crop",
+    description:
+      "A SCORM-compliant platform for selling micro-courses, featuring adaptive learning paths, VOD encoding, and integrated payment gateways.",
+    metrics: [
+      { label: "Completion Rate", value: "+25%", icon: TrendingUp },
+      { label: "Course Listings", value: "1,500+", icon: Database },
+      { label: "Server Load (Avg.)", value: "<10%", icon: Cloud },
+    ],
+    technologies: ["Next.js", "Stripe", "HLS Streaming", "MongoDB"],
+    link: "#",
+    icon: Zap,
+  },
+  {
+    title: "PennyPal: Cross-Platform Expense Tracker",
+    client: "The Budget Architect",
+    category: "Mobile FinTech",
+    image:
+      "https://images.unsplash.com/photo-1551408139-335194165d21?q=80&w=800&auto=format&fit=crop",
+    description:
+      "A fast, native-feeling mobile app for tracking and categorizing personal expenses, utilizing OCR receipt scanning and offline storage capabilities.",
+    metrics: [
+      { label: "Daily Active Users", value: "10K+", icon: Users },
+      { label: "App Size", value: "<15MB", icon: Code },
+      { label: "Sync Speed", value: "<1s", icon: Zap },
+    ],
+    technologies: ["React Native", "GraphQL", "SQLite", "Firebase Auth"],
+    link: "#",
+    icon: DollarSign,
+  },
+  {
+    title: "FusionCI/CD: Decoupled DevOps Automation",
+    client: "Vertex Retail Group",
+    category: "Advanced DevOps",
+    image:
+      "https://images.unsplash.com/photo-1582236371720-302a28172935?q=80&w=800&auto=format&fit=crop",
+    description:
+      "A highly scalable, self-healing CI/CD pipeline using a GitOps approach, drastically reducing deployment failures and rollback times.",
+    metrics: [
+      { label: "Deployment Failure", value: "-90%", icon: TrendingUp },
+      { label: "Rollback Time", value: "<5s", icon: Zap },
+      { label: "Environments", value: "Staging, Prod, Dev", icon: HardHat },
+    ],
+    technologies: ["Jenkins", "Docker", "Ansible", "Kubernetes"],
+    link: "#",
+    icon: HardHat,
   },
 ];
+
+const ProjectCard = ({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) => {
+  const Icon = project.icon;
+  return (
+    <motion.div
+      key={index}
+      className="group relative rounded-3xl shadow-2xl overflow-hidden border-2 border-transparent 
+                 bg-white dark:bg-gray-900 dark:border-indigo-500/50 hover:shadow-indigo-500/30 
+                 transition-all duration-500"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: index * 0.1 }}
+      whileHover={{ scale: 1.03 }}
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      {/* Image */}
+      <div className="relative h-64 overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src =
+              "https://placehold.co/800x600/1e293b/a5b4fc?text=Project+Image";
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-t from-black/80 to-transparent" />
+        <div className="absolute bottom-4 left-6 flex items-center gap-3">
+          <Icon className="w-6 h-6 text-teal-400" />
+          <span className="text-sm font-bold text-white tracking-wider">
+            {project.category}
+          </span>
+        </div>
+        <a
+          href={project.link}
+          className="absolute top-4 right-4 p-2 bg-white/20 backdrop-blur-sm rounded-full 
+                     text-white hover:bg-white/40 transition-all"
+        >
+          <ExternalLink className="w-5 h-5" />
+        </a>
+      </div>
+
+      {/* Content */}
+      <div className="p-6 md:p-8">
+        <h3 className="text-2xl font-extrabold mb-2 text-gray-900 dark:text-white">
+          {project.title}
+        </h3>
+        <p className="text-md text-indigo-600 dark:text-indigo-400 font-semibold mb-4">
+          Client:{" "}
+          <span className="text-gray-700 dark:text-gray-300">
+            {project.client}
+          </span>
+        </p>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+          {project.description}
+        </p>
+
+        {/* Metrics */}
+        <div className="grid grid-cols-3 gap-4 mb-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+          {project.metrics.map((metric, idx) => {
+            const MetricIcon = metric.icon;
+            return (
+              <div key={idx} className="text-center">
+                <MetricIcon className="w-5 h-5 text-teal-500 mx-auto mb-2" />
+                <p className="text-xl font-bold text-gray-900 dark:text-white">
+                  {metric.value}
+                </p>
+                <p className="text-xs uppercase tracking-wider text-gray-500">
+                  {metric.label}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Technologies */}
+        <div className="flex flex-wrap gap-2">
+          {project.technologies.map((tech, i) => (
+            <span
+              key={i}
+              className="px-3 py-1 text-xs font-semibold rounded-full bg-gray-100 
+                         text-gray-800 dark:bg-gray-800 dark:text-gray-200"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export const ProjectsSection = () => {
   const [showAll, setShowAll] = useState(false);
   const displayedProjects = showAll ? projects : projects.slice(0, 4);
+  const projectsRemaining = projects.length - 3;
+
+  const gradientButtonClass =
+    "px-8 py-3 rounded-xl text-white font-bold bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-700 hover:to-sky-600 shadow-md transition-transform hover:scale-105";
 
   return (
     <section
       id="projects"
-      className="py-24 bg-gray-50/80 dark:bg-transparent transition-colors duration-300 backdrop-blur-sm"
+      className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-500"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-base font-bold text-brand-primary dark:text-brand-accent tracking-wide uppercase mb-3">
-            💼 Featured Projects
+          <h2 className="text-base font-bold text-teal-500 uppercase mb-3">
+            🚀 Case Studies
           </h2>
-          <p className="mt-2 text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-4">
-            Real Results from{" "}
-            <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
-              Real Projects
+          <p className="mt-2 text-4xl sm:text-6xl font-black mb-4 leading-tight text-gray-900 dark:text-white">
+            Impactful Results,{" "}
+            <span className="bg-linear-to-r from-indigo-500 to-sky-500 bg-clip-text text-transparent">
+              Real Innovation
             </span>
           </p>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Explore our portfolio of successful projects that drove measurable
-            business impact
+          <p className="text-lg max-w-3xl mx-auto mt-4 text-gray-600 dark:text-gray-400">
+            Explore how we leverage cutting-edge technology to deliver
+            measurable value and solve complex real-world challenges for our
+            clients.
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {displayedProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="group relative bg-white/95 dark:bg-gray-800/70 backdrop-blur-md rounded-3xl shadow-xl border border-gray-100 dark:border-blue-500/20 overflow-hidden"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{
-                scale: 1.02,
-                y: -5,
-                boxShadow: "0px 20px 40px rgba(59, 130, 246, 0.3)",
-              }}
-              viewport={{ once: true }}
-            >
-              {/* Project Image */}
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute top-4 right-4">
-                  <span className="px-3 py-1 text-xs font-bold text-white bg-brand-primary rounded-full">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Project Content */}
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white select-text">
-                    {project.title}
-                  </h3>
-                  <a
-                    href={project.link}
-                    className="text-brand-primary dark:text-brand-accent hover:scale-110 transition-transform flex-shrink-0"
-                    aria-label="View project"
-                  >
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
-                </div>
-
-                <p className="text-sm text-brand-secondary dark:text-brand-accent font-semibold mb-3 select-text">
-                  Client:{" "}
-                  <span className="text-brand-primary dark:text-white">
-                    {project.client}
-                  </span>
-                </p>
-
-                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed select-text">
-                  {project.description}
-                </p>
-
-                {/* Metrics */}
-                <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
-                  {project.metrics.map((metric, idx) => {
-                    const Icon = metric.icon;
-                    return (
-                      <div key={idx} className="text-center">
-                        <Icon className="w-5 h-5 text-brand-primary dark:text-brand-accent mx-auto mb-2" />
-                        <p className="text-lg font-bold text-gray-900 dark:text-white">
-                          {metric.value}
-                        </p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
-                          {metric.label}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 text-xs font-semibold text-brand-primary dark:text-brand-accent bg-blue-50 dark:bg-gray-700 rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
 
-        {/* View More Button */}
-        {!showAll && projects.length > 4 && (
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
+        {!showAll && projectsRemaining > 0 && (
+          <div className="text-center mt-16">
             <button
               onClick={() => setShowAll(true)}
-              className="px-8 py-4 rounded-xl text-white font-bold bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-xl transition-all duration-300 transform hover:scale-105"
+              className={gradientButtonClass}
             >
-              View More Projects ({projects.length - 4} more) →
+              View {projectsRemaining} More Case Studies →
             </button>
-          </motion.div>
+          </div>
         )}
-
-        {/* Bottom CTA */}
-        <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Ready to see similar results for your business?
-          </p>
-          <a
-            href="#contact"
-            className="inline-block px-8 py-4 rounded-xl text-white font-bold bg-gradient-primary hover:shadow-glow-blue shadow-xl transition-all duration-300 transform hover:scale-105"
-          >
-            Let&apos;s Build Something Amazing →
-          </a>
-        </motion.div>
       </div>
     </section>
   );

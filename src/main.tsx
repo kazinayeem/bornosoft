@@ -10,6 +10,8 @@ import Layout from "./pages/Layout.tsx";
 import RefundPolicy from "./pages/RefundPolicy.tsx";
 import TermsAndConditions from "./pages/Terms&Conditions.tsx";
 import Privacypolicy from "./pages/privacy-policy.tsx";
+import { TeamSection } from "./components/TeamSection.tsx";
+import CostCalculator from "./pages/CostCalculator.tsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: "/privacy-policy",
         element: <Privacypolicy />,
+      },
+      {
+        path: "/teams",
+        element: <TeamSection />,
+      },
+      {
+        path: "/cost-calculator",
+        element: <CostCalculator />,
       },
     ],
   },

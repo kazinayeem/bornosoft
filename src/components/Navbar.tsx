@@ -15,12 +15,13 @@ export const Navbar = () => {
   });
 
   const navItems = [
-    { name: "Solutions", href: "#solutions" },
-    { name: "Tech Stack", href: "#tech" },
-    { name: "Projects", href: "#projects" },
-    { name: "Our Team", href: "#team" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Contact", href: "#contact" },
+    { name: "Solutions", href: "/#solutions" },
+    { name: "Tech Stack", href: "/#tech" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Our Team", href: "/#team" },
+    { name: "Pricing", href: "/#pricing" },
+    { name: "Contact", href: "/#contact" },
+    { name: "Our Team", href: "/teams" },
   ];
 
   return (
