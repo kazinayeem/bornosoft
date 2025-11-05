@@ -8,32 +8,30 @@ export const Footer = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Newsletter Signup:", email);
-    setMessage(
-      "✅ Thank you for subscribing! You'll receive updates from BornoSoft soon."
-    );
+    setMessage("✅ Thank you for subscribing!");
     setEmail("");
-    setTimeout(() => setMessage(""), 5000);
+    setTimeout(() => setMessage(""), 4000);
   };
 
   return (
-    <footer className="bg-gray-100 dark:bg-gray-950/90 backdrop-blur-md text-gray-800 dark:text-gray-200 mt-12 border-t border-gray-300 dark:border-blue-500/20 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 border-b border-gray-300 dark:border-gray-800 pb-8">
-          {/* Logo/Description */}
+    <footer className="relative bg-gray-50 dark:bg-gray-950/90 backdrop-blur-md text-gray-800 dark:text-gray-200 border-t border-gray-200 dark:border-blue-500/10 transition-colors duration-300">
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/10 pointer-events-none"></div>
+
+      <div className="relative max-w-7xl mx-auto py-16 px-6 lg:px-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-gray-300/50 dark:border-gray-800/70 pb-12">
+          {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2 text-2xl font-extrabold bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent tracking-tight">
               <Zap className="w-6 h-6 text-brand-primary" />
-              <span>BornoSoft</span>
+              <span>BornoSoft-NR</span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Transform ideas into intelligent digital solutions. Expert
-              AI-powered web development in Bangladesh.
+            <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+              We transform your ideas into intelligent digital solutions. Expert
+              in AI-powered web and cloud development.
             </p>
-            <div className="flex items-center gap-2 text-sm">
-              <span className="px-3 py-1 bg-brand-primary/10 text-brand-accent rounded-full font-semibold">
-                ⭐ 50+ Happy Clients
-              </span>
+            <div className="flex items-center gap-2 text-sm font-medium text-brand-primary dark:text-brand-accent">
+              ⭐ 20+ Happy Clients
             </div>
           </div>
 
@@ -43,38 +41,22 @@ export const Footer = () => {
               Company
             </h3>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link
-                  to="/about"
-                  className="text-gray-600 dark:text-gray-400 hover:text-brand-primary dark:hover:text-brand-primary transition duration-150"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/refund-policy"
-                  className="text-gray-600 dark:text-gray-400 hover:text-brand-primary dark:hover:text-brand-primary transition duration-150"
-                >
-                  Refund Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/terms"
-                  className="text-gray-600 dark:text-gray-400 hover:text-brand-primary dark:hover:text-brand-primary transition duration-150"
-                >
-                  Terms & Conditions
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/privacy-policy"
-                  className="text-gray-600 dark:text-gray-400 hover:text-brand-primary dark:hover:text-brand-primary transition duration-150"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
+              {[
+                { to: "/about", label: "About Us" },
+                { to: "/refund-policy", label: "Refund Policy" },
+                { to: "/terms", label: "Terms & Conditions" },
+                { to: "/privacy-policy", label: "Privacy Policy" },
+                { to: "/our-methodlogy", label: "Methodology" },
+              ].map(({ to, label }) => (
+                <li key={to}>
+                  <Link
+                    to={to}
+                    className="text-gray-600 dark:text-gray-400 hover:text-brand-primary dark:hover:text-brand-accent transition-colors duration-150"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -83,29 +65,29 @@ export const Footer = () => {
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               Contact
             </h3>
-            <div className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-              <p>
-                <strong className="text-brand-primary dark:text-brand-accent">
+            <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+              <li>
+                <span className="font-semibold text-brand-primary dark:text-brand-accent">
                   Email:
-                </strong>
+                </span>
                 <br />
                 info@bornosoft.com
-              </p>
-              <p>
-                <strong className="text-brand-primary dark:text-brand-accent">
+              </li>
+              <li>
+                <span className="font-semibold text-brand-primary dark:text-brand-accent">
                   Location:
-                </strong>
+                </span>
                 <br />
                 Dhaka, Bangladesh
-              </p>
-              <p>
-                <strong className="text-brand-primary dark:text-brand-accent">
+              </li>
+              <li>
+                <span className="font-semibold text-brand-primary dark:text-brand-accent">
                   Response:
-                </strong>
+                </span>
                 <br />
                 Within 24 hours
-              </p>
-            </div>
+              </li>
+            </ul>
           </div>
 
           {/* Newsletter */}
@@ -116,8 +98,9 @@ export const Footer = () => {
                 Curve
               </span>
             </h3>
-            <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">
-              Get exclusive insights on AI trends & web development.
+            <p className="text-xs text-gray-600 dark:text-gray-400 mb-5">
+              Subscribe for the latest updates on AI, web trends, and smart
+              solutions.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-3">
@@ -134,22 +117,32 @@ export const Footer = () => {
               </div>
               <button
                 type="submit"
-                className="w-full px-4 py-2 text-sm font-bold rounded-lg text-white bg-gradient-to-r from-brand-primary to-brand-secondary hover:shadow-glow-blue transition-all duration-300"
+                className="w-full px-4 py-2 text-sm font-bold rounded-lg text-white bg-gradient-to-r from-brand-primary to-brand-secondary hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
               >
                 Subscribe
               </button>
             </form>
+
             {message && (
-              <p className="mt-2 text-xs font-semibold text-green-500 dark:text-green-400">
+              <p className="mt-3 text-xs font-semibold text-green-500 dark:text-green-400">
                 {message}
               </p>
             )}
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 border-t border-gray-300 dark:border-gray-800 pt-8 text-center text-sm text-gray-600 dark:text-gray-400">
-          &copy; {new Date().getFullYear()} BornoSoft. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="mt-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left text-sm text-gray-600 dark:text-gray-400">
+          <p>
+            &copy; {new Date().getFullYear()}{" "}
+            <span className="font-semibold text-brand-primary dark:text-brand-accent">
+              BornoSoft-NR
+            </span>
+            . All rights reserved.
+          </p>
+          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-500">
+            Crafted with 💙 using Next.js & Tailwind CSS
+          </p>
         </div>
       </div>
     </footer>

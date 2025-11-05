@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import {
   Mail,
   User,
@@ -49,59 +48,66 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-24 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-transparent dark:via-transparent dark:to-transparent backdrop-blur-sm transition-colors duration-300"
+      className="py-20 sm:py-24 bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 
+        dark:from-transparent dark:via-transparent dark:to-transparent 
+        backdrop-blur-sm transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-14 sm:mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-4"
+            className="inline-flex items-center justify-center w-14 sm:w-16 h-14 sm:h-16 
+              rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-4 sm:mb-6"
             whileHover={{ scale: 1.1, rotate: 10 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <Send className="w-8 h-8 text-white" />
+            <Send className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
           </motion.div>
 
-          <h2 className="text-base font-bold text-brand-primary dark:text-brand-accent tracking-wide uppercase mb-3">
+          <h2 className="text-sm sm:text-base font-bold text-brand-primary dark:text-brand-accent tracking-wide uppercase mb-2 sm:mb-3">
             Get in Touch
           </h2>
-          <p className="mt-2 text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-4">
+          <p className="mt-2 text-3xl sm:text-5xl font-black text-gray-900 dark:text-white mb-3 sm:mb-4 leading-snug sm:leading-tight">
             Let&apos;s Build Something{" "}
             <span className="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
               Great Together
             </span>
           </p>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2 sm:px-0">
             Ready to transform your business? Share your vision and we&apos;ll
-            craft the perfect solution
+            craft the perfect solution.
           </p>
         </motion.div>
 
+        {/* Contact Cards + Form */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact Info Cards */}
+          {/* Contact Info */}
           <motion.div
-            className="lg:col-span-1 space-y-6"
-            initial={{ opacity: 0, x: -50 }}
+            className="space-y-6"
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            {/* Email Card */}
+            {/* Email */}
             <motion.div
-              className="p-6 bg-white/95 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl border-2 border-gray-200 dark:border-gray-700 hover:border-brand-primary dark:hover:border-brand-accent transition-all duration-300 shadow-lg"
+              className="p-6 sm:p-8 bg-white/95 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl 
+                border border-gray-200 dark:border-gray-700 
+                hover:border-brand-primary dark:hover:border-brand-accent 
+                transition-all duration-300 shadow-md"
               whileHover={{ scale: 1.02, y: -5 }}
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-white" />
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-1">
                     Email Us
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
@@ -109,7 +115,7 @@ export const ContactSection = () => {
                   </p>
                   <a
                     href="mailto:info@bornosoft.com"
-                    className="text-brand-primary dark:text-brand-accent font-semibold hover:underline"
+                    className="text-brand-primary dark:text-brand-accent font-semibold hover:underline break-all"
                   >
                     info@bornosoft.com
                   </a>
@@ -117,17 +123,20 @@ export const ContactSection = () => {
               </div>
             </motion.div>
 
-            {/* Phone Card */}
+            {/* Phone */}
             <motion.div
-              className="p-6 bg-white/95 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl border-2 border-gray-200 dark:border-gray-700 hover:border-brand-primary dark:hover:border-brand-accent transition-all duration-300 shadow-lg"
+              className="p-6 sm:p-8 bg-white/95 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl 
+                border border-gray-200 dark:border-gray-700 
+                hover:border-brand-primary dark:hover:border-brand-accent 
+                transition-all duration-300 shadow-md"
               whileHover={{ scale: 1.02, y: -5 }}
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-white" />
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                  <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-1">
                     Call Us
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
@@ -143,17 +152,20 @@ export const ContactSection = () => {
               </div>
             </motion.div>
 
-            {/* Location Card */}
+            {/* Location */}
             <motion.div
-              className="p-6 bg-white/95 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl border-2 border-gray-200 dark:border-gray-700 hover:border-brand-primary dark:hover:border-brand-accent transition-all duration-300 shadow-lg"
+              className="p-6 sm:p-8 bg-white/95 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl 
+                border border-gray-200 dark:border-gray-700 
+                hover:border-brand-primary dark:hover:border-brand-accent 
+                transition-all duration-300 shadow-md"
               whileHover={{ scale: 1.02, y: -5 }}
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-white" />
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-1">
                     Visit Us
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
@@ -166,16 +178,18 @@ export const ContactSection = () => {
               </div>
             </motion.div>
 
-            {/* Response Time Card */}
+            {/* Response Time */}
             <motion.div
-              className="p-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-xl"
+              className="p-6 sm:p-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-xl"
               whileHover={{ scale: 1.02, y: -5 }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <Clock className="w-8 h-8 text-white" />
-                <h3 className="text-lg font-bold text-white">Quick Response</h3>
+              <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                <h3 className="text-base sm:text-lg font-bold text-white">
+                  Quick Response
+                </h3>
               </div>
-              <p className="text-white/90 text-sm">
+              <p className="text-white/90 text-sm sm:text-base">
                 We typically respond within{" "}
                 <span className="font-black text-white">24 hours</span> or less!
               </p>
@@ -185,20 +199,22 @@ export const ContactSection = () => {
           {/* Contact Form */}
           <motion.div
             className="lg:col-span-2"
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <motion.form
               onSubmit={handleSubmit}
-              className="p-8 bg-white/95 dark:bg-gray-800/70 backdrop-blur-md border-2 border-gray-200 dark:border-blue-500/20 rounded-2xl shadow-2xl transition-all duration-300 h-full"
+              className="p-6 sm:p-8 bg-white/95 dark:bg-gray-800/70 backdrop-blur-md border border-gray-200 
+                dark:border-blue-500/20 rounded-2xl shadow-xl transition-all duration-300"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="space-y-6">
+              <div className="space-y-5 sm:space-y-6">
+                {/* Name */}
                 <div>
                   <label
                     htmlFor="name"
@@ -212,11 +228,14 @@ export const ContactSection = () => {
                     id="name"
                     name="name"
                     required
-                    className="mt-1 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-700/50 border-2 border-gray-300 dark:border-gray-600 dark:text-white rounded-xl shadow-sm focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition duration-300"
+                    className="block w-full px-4 py-3 sm:py-4 bg-gray-50 dark:bg-gray-700/50 border border-gray-300 
+                      dark:border-gray-600 dark:text-white rounded-xl shadow-sm focus:ring-2 focus:ring-brand-primary 
+                      focus:border-brand-primary transition duration-300"
                     placeholder="John Doe"
                   />
                 </div>
 
+                {/* Email */}
                 <div>
                   <label
                     htmlFor="email"
@@ -230,11 +249,14 @@ export const ContactSection = () => {
                     id="email"
                     name="email"
                     required
-                    className="mt-1 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-700/50 border-2 border-gray-300 dark:border-gray-600 dark:text-white rounded-xl shadow-sm focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition duration-300"
+                    className="block w-full px-4 py-3 sm:py-4 bg-gray-50 dark:bg-gray-700/50 border border-gray-300 
+                      dark:border-gray-600 dark:text-white rounded-xl shadow-sm focus:ring-2 focus:ring-brand-primary 
+                      focus:border-brand-primary transition duration-300"
                     placeholder="you@company.com"
                   />
                 </div>
 
+                {/* Message */}
                 <div>
                   <label
                     htmlFor="message"
@@ -248,17 +270,23 @@ export const ContactSection = () => {
                     name="message"
                     rows={5}
                     required
-                    className="mt-1 block w-full px-4 py-3 bg-gray-50 dark:bg-gray-700/50 border-2 border-gray-300 dark:border-gray-600 dark:text-white rounded-xl shadow-sm focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition duration-300 resize-none"
+                    className="block w-full px-4 py-3 sm:py-4 bg-gray-50 dark:bg-gray-700/50 border border-gray-300 
+                      dark:border-gray-600 dark:text-white rounded-xl shadow-sm focus:ring-2 focus:ring-brand-primary 
+                      focus:border-brand-primary transition duration-300 resize-none"
                     placeholder="Tell us about your project needs, timeline, and budget..."
                   ></textarea>
                 </div>
 
+                {/* Submit */}
                 <motion.button
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 py-4 px-6 border border-transparent rounded-xl shadow-xl text-lg font-black text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 py-3 sm:py-4 px-6 border border-transparent 
+                    rounded-xl shadow-xl text-base sm:text-lg font-black text-white bg-gradient-to-r 
+                    from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 
+                    disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <>
@@ -273,18 +301,19 @@ export const ContactSection = () => {
                   )}
                 </motion.button>
 
+                {/* Status Message */}
                 {status && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`flex items-center gap-2 p-4 rounded-xl ${
+                    className={`flex items-center gap-2 p-4 rounded-xl text-sm font-semibold ${
                       status.includes("❌") || status.includes("Failed")
                         ? "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400"
                         : "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400"
                     }`}
                   >
                     <CheckCircle className="w-5 h-5" />
-                    <p className="text-sm font-semibold">{status}</p>
+                    <p>{status}</p>
                   </motion.div>
                 )}
               </div>

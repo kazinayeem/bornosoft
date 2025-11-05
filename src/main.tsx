@@ -12,6 +12,7 @@ import TermsAndConditions from "./pages/Terms&Conditions.tsx";
 import Privacypolicy from "./pages/privacy-policy.tsx";
 import { TeamSection } from "./components/TeamSection.tsx";
 import CostCalculator from "./pages/CostCalculator.tsx";
+import BornosoftnrProcessApp from "./pages/OutMethodlogy.tsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/cost-calculator",
         element: <CostCalculator />,
+      },
+      {
+        path: "/our-methodlogy",
+        element: <BornosoftnrProcessApp />,
       },
     ],
   },

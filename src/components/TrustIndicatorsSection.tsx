@@ -6,14 +6,14 @@ const stats = [
   {
     icon: Users,
     label: "Happy Clients",
-    value: 50,
+    value: 20,
     suffix: "+",
     color: "from-blue-500 to-cyan-500",
   },
   {
     icon: TrendingUp,
     label: "Projects Completed",
-    value: 120,
+    value: 23,
     suffix: "+",
     color: "from-purple-500 to-pink-500",
   },
@@ -27,7 +27,7 @@ const stats = [
   {
     icon: Award,
     label: "Client Satisfaction",
-    value: 98,
+    value: 3,
     suffix: "%",
     color: "from-yellow-500 to-orange-500",
   },

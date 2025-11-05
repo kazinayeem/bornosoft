@@ -45,7 +45,7 @@ export const Navbar = () => {
               className="flex items-center space-x-2 text-2xl font-extrabold bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent tracking-tight"
             >
               <Zap className="w-6 h-6 text-brand-primary animate-pulse" />
-              <span>BornoSoft</span>
+              <span>BornoSoft-NR</span>
             </Link>
           </motion.div>
 
