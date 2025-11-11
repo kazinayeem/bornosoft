@@ -11,8 +11,22 @@ import {
 
 const teamMembers = [
   {
+    name: "Reduan Ahmad",
+    position: "Co-Founder & Software Engineer",
+    bio: "Dedicated to creating modern, efficient, and visually engaging web experiences. Skilled in frontend and backend development, transforming ideas into seamless digital solutions.",
+    image: "https://avatars.githubusercontent.com/u/143122014?v=4",
+    location: "Dhaka, Bangladesh",
+    socials: {
+      email: "reduanahmadswe@gmail.com",
+      linkedin: "https://linkedin.com/in/reduanahmadswe",
+      github: "https://github.com/reduanahmadswe",
+      twitter: "https://twitter.com/reduanahmadswe",
+      website: "https://reduanahmadswe.site",
+    },
+  },
+  {
     name: "Mohammad Ali Nayeem",
-    position: "Full Stack Developer & Software Engineer",
+    position: "Co-Founder & Software Engineer",
     bio: "Passionate about building scalable, user-friendly, and modern web applications. Experienced in full-stack development with a strong interest in AI, Machine Learning, and Data Science.",
     image: "https://avatars.githubusercontent.com/u/85398213?v=4",
     location: "Dhaka, Bangladesh",
@@ -24,18 +38,20 @@ const teamMembers = [
       website: "https://kazinayeem.site",
     },
   },
+
   {
-    name: "Reduan Ahmad",
-    position: "Full Stack Developer & Software Engineer",
-    bio: "Dedicated to creating modern, efficient, and visually engaging web experiences. Skilled in frontend and backend development, transforming ideas into seamless digital solutions.",
-    image: "https://avatars.githubusercontent.com/u/143122014?v=4",
+    name: "Jahid Hossain (Jahid)",
+    position: "Marketing Specialist",
+    bio: "Creative and result-driven marketing professional with a strong focus on digital campaigns, brand strategy, and audience engagement. Passionate about helping businesses grow through innovative marketing solutions.",
+    image:
+      "https://i.postimg.cc/y8mVyNsz/507182165-1281243373566277-8309238163797682079-n-removebg-preview.png",
     location: "Dhaka, Bangladesh",
     socials: {
-      email: "reduanahmadswe@gmail.com",
-      linkedin: "https://linkedin.com/in/reduanahmadswe",
-      github: "https://github.com/reduanahmadswe",
-      twitter: "https://twitter.com/reduanahmadswe",
-      website: "https://reduanahmadswe.site",
+      email: "jahid@bornosoft.com",
+      linkedin: "https://www.linkedin.com/in/jahid-hossain/",
+      github: "",
+      twitter: "",
+      website: "",
     },
   },
 ];
